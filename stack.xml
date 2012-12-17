@@ -1,22 +1,17 @@
 <stack>
-  <description brief="rqt">
-    Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI.
+  <description brief="rqt_pr2_dashboard">
+      rqt_pr2_dashboard is a GUI for debugging and controlling low-level state of the PR2.  It shows things like battery status and breaker states, as well as integrating tools like rqt_console and robot_monitor.
   </description>
-  <author>Maintained by Dirk Thomas</author>
+  <author>Aaron Blasdel</author>
   <license>BSD</license>
-  <review status="API cleared" notes="2012-06-20"/>
-  <url>http://ros.org/wiki/rqt</url>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rqt_pr2_dashboard</url>
 
-  <depend stack="ros"/>
-  <depend stack="common_msgs"/> <!-- geometry_msgs, sensor_msgs -->
-  <depend stack="geometry"/> <!-- tf -->
-  <depend stack="geometry_experimental"/> <!-- tf2 -->
-  <depend stack="image_common"/> <!-- image_transport -->
-  <depend stack="nodelet_core"/> <!-- nodelet -->
-  <depend stack="qt_gui_core"/> <!-- qt_dotgraph, qt_gui_core, qt_gui_cpp -->
-  <depend stack="ros_comm"/> <!-- roscpp, rosgraph, rosmsg, rosnode, rospy, rosservice, rostopic, rosgraph-->
+  <depend stack="common_msgs"/> <!-- diagnostic_msgs -->
+  <depend stack="pr2_common"/> <!-- pr2_msgs -->
+  <depend stack="pr2_power_drivers"/> <!-- pr2_power_board -->
+  <depend stack="ros"/> <!-- roslib -->
+  <depend stack="ros_comm"/> <!-- rospy, std_srvs -->
+  <depend stack="rqt"/> <!-- rqt_robot_dashboard -->
   <depend stack="std_msgs"/> <!-- std_msgs -->
-  <depend stack="vision_opencv"/> <!-- cv_bridge -->
-  <depend stack="visualization"/> <!-- rviz -->
-  <depend stack="pr2_power_drivers"/> <!-- rqt_pr2_dashboard -->
 </stack>
