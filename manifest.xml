@@ -12,6 +12,7 @@
   <depend package="pr2_power_board"/>
   <depend package="roslib"/>
   <depend package="rospy"/>
+  <depend package="rqt_gui"/>
   <depend package="rqt_robot_dashboard"/>
   <depend package="std_msgs"/>
   <depend package="std_srvs"/>
