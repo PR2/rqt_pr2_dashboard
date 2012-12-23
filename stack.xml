@@ -12,6 +12,7 @@
   <depend stack="pr2_power_drivers"/> <!-- pr2_power_board -->
   <depend stack="ros"/> <!-- roslib -->
   <depend stack="ros_comm"/> <!-- rospy, std_srvs -->
-  <depend stack="rqt_robot"/> <!-- rqt_robot_dashboard -->
+  <depend stack="rqt"/> <!-- rqt_gui -->
+  <depend stack="rqt_robot_plugins"/> <!-- rqt_robot_dashboard -->
   <depend stack="std_msgs"/> <!-- std_msgs -->
 </stack>
