@@ -33,6 +33,7 @@ from python_qt_binding.QtCore import QSize
 
 from rqt_robot_dashboard.widgets import MenuDashWidget
 
+
 class PR2Motors(MenuDashWidget):
     """
     Dashboard widget to display motor state and allow interaction.
@@ -59,7 +60,7 @@ class PR2Motors(MenuDashWidget):
         self.add_action('Halt', halt_callback)
         self.setToolTip('Motors')
 
-        self.setFixedSize(self._icons[0].actualSize(QSize(50,30)))
+        self.setFixedSize(self._icons[0].actualSize(QSize(50, 30)))
 
     def set_ok(self):
         self.update_state(0)

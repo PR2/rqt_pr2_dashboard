@@ -29,7 +29,6 @@
 # LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
-import os.path
 import rospy
 
 from python_qt_binding.QtCore import QSize
@@ -37,7 +36,7 @@ from python_qt_binding.QtCore import QSize
 from pr2_msgs.msg import PowerBoardState
 from pr2_power_board.srv import PowerBoardCommand, PowerBoardCommandRequest
 
-from rqt_robot_dashboard.widgets import MonitorDashWidget, ConsoleDashWidget, MenuDashWidget, BatteryDashWidget, IconToolButton
+from rqt_robot_dashboard.widgets import MenuDashWidget
 
 from python_qt_binding.QtGui import QMessageBox
 
@@ -53,10 +52,6 @@ class PR2BreakerButton(MenuDashWidget):
         :param breaker_index: Index of the breaker
         :type breaker_index: int
         """
-
-        import rospkg
-        import os.path
-        rp = rospkg.RosPack()
 
         if breaker_name == 'Left Arm':
             breaker_icon = 'ic-larm.svg'
@@ -74,10 +69,10 @@ class PR2BreakerButton(MenuDashWidget):
 
         icons = [ok_icon, warn_icon, err_icon, stale_icon]
 
-        super(PR2BreakerButton, self).__init__('Breaker:' + breaker_name, icons=icons, icon_paths=[['rqt_pr2_dashboard','images']])
+        super(PR2BreakerButton, self).__init__('Breaker:' + breaker_name, icons=icons, icon_paths=[['rqt_pr2_dashboard', 'images']])
         self.update_state(3)
 
-        self.setFixedSize(self._icons[0].actualSize(QSize(50,30)))
+        self.setFixedSize(self._icons[0].actualSize(QSize(50, 30)))
 
         self.add_action('Enable', self.on_enable)
         self.add_action('Standby', self.on_standby)
@@ -112,21 +107,21 @@ class PR2BreakerButton(MenuDashWidget):
             if (cmd == "start"):
                 QMessageBox.critical(self, "Error", self.tr("Breakers will not enable because one of the runstops is pressed"))
                 return False
-    
+
         try:
             power_cmd = PowerBoardCommandRequest()
             power_cmd.breaker_number = breaker
             power_cmd.command = cmd
             power_cmd.serial_number = self._serial
             self._power_control(power_cmd)
-      
+
             return True
         except rospy.ServiceException, e:
-            QMessageBox.critical(self, "Error", "Service call failed with error: %s"%(e), "Error")
+            QMessageBox.critical(self, "Error", "Service call failed with error: %s" % (e), "Error")
             return False
-      
+
         return False
-  
+
     def control3(self, cmd):
         if (not self.control(0, cmd)):
             return False
@@ -135,55 +130,55 @@ class PR2BreakerButton(MenuDashWidget):
         if (not self.control(2, cmd)):
             return False
         return True
-  
+
     def on_enable(self):
         self.set_enable()
-  
+
     def on_standby(self):
         self.set_standby()
-  
+
     def on_disable(self):
         self.set_disable()
-    
+
     def on_enable_all(self):
         self.set_enable_all()
-  
+
     def on_standby_all(self):
         self.set_standby_all()
-  
+
     def on_disable_all(self):
         self.set_disable_all()
-    
+
     def set_enable(self):
         if (not self.control(self._index, "reset")):
             return
-    
+
         self.control(self._index, "start")
-    
+
     def set_standby(self):
         if (not self.control(self._index, "reset")):
             return
-    
+
         self.control(self._index, "stop")
-    
+
     def set_disable(self):
         self.control(self._index, "disable")
-    
+
     def set_enable_all(self):
         if (not self.control3("reset")):
             return
-    
+
         self.control3("start")
-  
+
     def set_standby_all(self):
         if (not self.control3("reset")):
             return
-    
+
         self.control3("stop")
-  
+
     def set_disable_all(self):
         self.control3("disable")
-    
+
     def set_power_board_state_msg(self, msg):
         """
         Sets state of button based on msg
@@ -192,12 +187,12 @@ class PR2BreakerButton(MenuDashWidget):
         :type msg: pr2_msgs.msg.PowerBoardState
         """
         last_voltage = msg.circuit_voltage[self._index]
-      
+
         self._power_board_state = msg
         self._serial = msg.serial_num
-    
+
         status_msg = "OK"
-    
+
         if (msg.circuit_state[self._index] == PowerBoardState.STATE_DISABLED):
             self.set_error()
             status_msg = "Disabled"
@@ -209,14 +204,14 @@ class PR2BreakerButton(MenuDashWidget):
             status_msg = "Standby"
         else:
             self.set_ok()
-     
-        if (status_msg != self._last_status_msg or abs(last_voltage - msg.circuit_voltage[self._index]) >= 0.1):  
-            self.setToolTip("Breaker: %s \nVoltage: %.02f \nState: %s"%(self._name, msg.circuit_voltage[self._index], status_msg))
+
+        if (status_msg != self._last_status_msg or abs(last_voltage - msg.circuit_voltage[self._index]) >= 0.1):
+            self.setToolTip("Breaker: %s \nVoltage: %.02f \nState: %s" % (self._name, msg.circuit_voltage[self._index], status_msg))
             self._last_status_msg = status_msg
-    
+
     def reset(self):
         self.set_stale()
-        self.setToolTip("Breaker: %s (Stale)"%(self._name))
+        self.setToolTip("Breaker: %s (Stale)" % (self._name))
 
     def set_ok(self):
         self.update_state(0)

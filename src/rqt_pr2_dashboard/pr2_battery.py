@@ -54,7 +54,7 @@ class PR2Battery(BatteryDashWidget):
         self._ac_present = 0
         self._plugged_in = False
 
-        self.setFixedSize(self._icons[1].actualSize(QSize(50,30)))
+        self.setFixedSize(self._icons[1].actualSize(QSize(50, 30)))
 
         self.update_perc(0)
 
@@ -68,7 +68,7 @@ class PR2Battery(BatteryDashWidget):
         last_pct = self._pct
         last_plugged_in = self._plugged_in
         last_time_remaining = self._time_remaining
-  
+
         self._power_consumption = msg.power_consumption
         self._time_remaining = msg.time_remaining
         self._pct = msg.relative_capacity / 100.0
@@ -77,7 +77,7 @@ class PR2Battery(BatteryDashWidget):
             drain_str = "remaining"
             if (self._plugged_in):
                 drain_str = "to full charge"
-                self.setToolTip("Battery: %.2f%% \nTime %s: %d Minutes"%(self._pct * 100.0, drain_str, self._time_remaining.to_sec()/60.0))
+                self.setToolTip("Battery: %.2f%% \nTime %s: %d Minutes" % (self._pct * 100.0, drain_str, self._time_remaining.to_sec() / 60.0))
                 self.charging = True
             self.update_perc(msg.relative_capacity)
 
