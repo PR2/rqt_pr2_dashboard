@@ -81,11 +81,11 @@ class PR2BreakerButton(MenuDashWidget):
 
         self.add_action('Enable', self.on_enable)
         self.add_action('Standby', self.on_standby)
-        self.add_action('Disable', self.on_standby)
+        self.add_action('Disable', self.on_disable)
         self.add_separator()
         self.add_action('Enable All Breakers', self.on_enable_all)
         self.add_action('Standby All Breakers', self.on_standby_all)
-        self.add_action('Disable All Breakers', self.on_standby_all)
+        self.add_action('Disable All Breakers', self.on_disable_all)
 
         self._power_control = rospy.ServiceProxy('power_board/control', PowerBoardCommand)
         self._serial = 0
