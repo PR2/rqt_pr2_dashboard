@@ -38,7 +38,8 @@ from pr2_msgs.msg import PowerBoardState, DashboardState
 import std_srvs.srv
 
 from rqt_robot_dashboard.dashboard import Dashboard
-from rqt_robot_dashboard.widgets import MonitorDashWidget, ConsoleDashWidget
+from rqt_robot_dashboard.monitor_dash_widget import MonitorDashWidget
+from rqt_robot_dashboard.console_dash_widget import ConsoleDashWidget
 
 from python_qt_binding.QtCore import QSize
 from python_qt_binding.QtGui import QMessageBox
