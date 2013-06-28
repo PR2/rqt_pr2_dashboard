@@ -7,7 +7,6 @@
 
   <author email="ablasdel@willowgarage.com">Aaron Blasdel</author>
   <maintainer email="isao.saito@mavs.uta.edu">Isaac Saito</maintainer>
-  <maintainer email="ablasdel@willowgarage.com">Aaron Blasdel</maintainer>
   <license>BSD</license>
   
   <url type="website">http://ros.org/wiki/rqt_pr2_dashboard</url>
