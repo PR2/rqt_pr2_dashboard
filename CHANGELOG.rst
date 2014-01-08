@@ -2,8 +2,8 @@
 Changelog for package rqt_pr2_dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.5 (2014-01-08)
+------------------
 * add robot groups for rqt plugins
 
 0.2.4 (2013-07-08)
