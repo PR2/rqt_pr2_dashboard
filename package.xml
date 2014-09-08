@@ -5,9 +5,8 @@
   <description>rqt_pr2_dashboard is a GUI for debugging and controlling low-level state of the PR2.  It shows things like battery status and breaker states, as well as integrating tools like rqt_console and robot_monitor.
   </description>
 
-  <author email="ablasdel@willowgarage.com">Aaron Blasdel</author>
-  <maintainer email="ablasdel@willowgarage.com">Aaron Blasdel</maintainer>
-  <maintainer email="isao.saito@mavs.uta.edu">Isaac Saito</maintainer>
+  <author email="ablasdel@gmail.com">Aaron Blasdel</author>
+  <maintainer email="noobaca2@gmail.com">Devon Ash</maintainer>
   <license>BSD</license>
   
   <url type="website">http://ros.org/wiki/rqt_pr2_dashboard</url>
