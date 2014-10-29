@@ -2,8 +2,8 @@
 Changelog for package rqt_pr2_dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.6 (2014-10-29)
+------------------
 * update maintainer (`#16 <https://github.com/PR2/rqt_pr2_dashboard/issues/16>`_)
 
 0.2.5 (2014-01-08)
