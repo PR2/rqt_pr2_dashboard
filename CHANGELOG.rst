@@ -2,6 +2,10 @@
 Changelog for package rqt_pr2_dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* update maintainer (`#16 <https://github.com/PR2/rqt_pr2_dashboard/issues/16>`_)
+
 0.2.5 (2014-01-08)
 ------------------
 * add robot groups for rqt plugins
