@@ -132,14 +132,14 @@ class PR2Dashboard(Dashboard):
             if (not all_breakers_enabled):
                 if(QMessageBox.question(self._breakers[0], self.tr('Enable Breakers?'), self.tr("Resetting the motors may not work because not all breakers are enabled.  Enable all the breakers first?"), QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes) == QMessageBox.Yes):
                     [breaker.set_enable() for breaker in self._breakers]
-        reset = rospy.ServiceProxy("pr2_etherCAT/reset_motors", std_srvs.srv.Empty)
+        reset = rospy.ServiceProxy("pr2_ethercat/reset_motors", std_srvs.srv.Empty)
         try:
             reset()
         except rospy.ServiceException, e:
             QMessageBox.critical(self._breakers[0], "Error", "Failed to reset the motors: service call failed with error: %s" % (e))
 
     def on_halt_motors(self):
-        halt = rospy.ServiceProxy("pr2_etherCAT/halt_motors", std_srvs.srv.Empty)
+        halt = rospy.ServiceProxy("pr2_ethercat/halt_motors", std_srvs.srv.Empty)
         try:
             halt()
         except rospy.ServiceException, e:
