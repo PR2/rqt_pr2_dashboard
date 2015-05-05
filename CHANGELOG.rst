@@ -2,8 +2,8 @@
 Changelog for package rqt_pr2_dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.7 (2015-05-05)
+------------------
 * Merge pull request `#17 <https://github.com/pr2/rqt_pr2_dashboard/issues/17>`_ from jstnhuang/hydro-devel
   Hydro migration: pr2_etherCAT -> pr2_ethercat
 * Hydro migration: pr2_etherCAT -> pr2_ethercat
