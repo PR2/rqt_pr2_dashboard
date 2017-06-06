@@ -46,15 +46,33 @@ class PR2Battery(BatteryDashWidget):
         :param context: the plugin context
         :type context: qt_gui.plugin.Plugin
         """
-        super(PR2Battery, self).__init__('PR2 Battery')
+        # Use green icons above 60 percent
+        icons = []
+        charge_icons = []
+        icons.append(['ic-battery-0.svg'])
+        icons.append(['ic-battery-20.svg'])
+        icons.append(['ic-battery-40.svg'])
+        icons.append(['ic-battery-60-green.svg'])
+        icons.append(['ic-battery-80-green.svg'])
+        icons.append(['ic-battery-100-green.svg'])
+        charge_icons.append(['ic-battery-charge-0.svg'])
+        charge_icons.append(['ic-battery-charge-20.svg'])
+        charge_icons.append(['ic-battery-charge-40.svg'])
+        charge_icons.append(['ic-battery-charge-60-green.svg'])
+        charge_icons.append(['ic-battery-charge-80-green.svg'])
+        charge_icons.append(['ic-battery-charge-100-green.svg'])
+        super(PR2Battery, self).__init__('PR2 Battery', icons=icons, charge_icons=charge_icons)
 
         self._power_consumption = 0.0
         self._pct = 0
         self._time_remaining = rospy.rostime.Duration(0)
         self._ac_present = 0
-        self._plugged_in = False
+        # use inherited function instead of accessing variable
+        self.set_charging(False)
 
-        self.setFixedSize(self._icons[1].actualSize(QSize(50, 30)))
+        # use default size and set margin to 0 to display the full battery symbol
+        self.setFixedSize(self._icons[1].actualSize(QSize(60, 100)))
+        self.setMargin(0)
 
         self.update_perc(0)
 
@@ -65,25 +83,28 @@ class PR2Battery(BatteryDashWidget):
         :param msg: message containing the power state of the PR2
         :type msg: pr2_msgs.PowerState
         """
+        # unset stale status, else the battery will stick to the stale loop, the unset_stale function is never called elsewhere
+        self.unset_stale()
         last_pct = self._pct
-        last_plugged_in = self._plugged_in
+        # self._plugged in has been changed to self._charging
+        last_charging = self._charging
         last_time_remaining = self._time_remaining
 
         self._power_consumption = msg.power_consumption
         self._time_remaining = msg.time_remaining
         self._pct = msg.relative_capacity / 100.0
-        self._plugged_in = msg.AC_present
-        if (last_pct != self._pct or last_plugged_in != self._plugged_in or last_time_remaining != self._time_remaining):
+        # use inherited function instead of accessing variable
+        self.set_charging(msg.AC_present)
+        if (last_pct != self._pct or last_charging != self._charging or last_time_remaining != self._time_remaining):
             drain_str = "remaining"
-            if (self._plugged_in):
+            if (self._charging):
                 drain_str = "to full charge"
-                self.setToolTip("Battery: %.2f%% \nTime %s: %d Minutes" % (self._pct * 100.0, drain_str, self._time_remaining.to_sec() / 60.0))
-                self.charging = True
+                # use battery name varibale
+                self.setToolTip("%s: %.2f%% \nTime %s: %d Minutes" % (self._name, self._pct * 100.0, drain_str, self._time_remaining.to_sec() / 60.0))
             self.update_perc(msg.relative_capacity)
 
     def set_stale(self):
-        self._plugged_in = 0
-        self._pct = 0
+        # use super function of set_stale instead of copy/paste
+        super(PR2Battery, self).set_stale()
         self._time_remaining = rospy.rostime.Duration(0)
         self._power_consumption = 0
-        self.setToolTip("Battery: Stale")
