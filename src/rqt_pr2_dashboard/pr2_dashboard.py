@@ -42,7 +42,10 @@ from rqt_robot_dashboard.monitor_dash_widget import MonitorDashWidget
 from rqt_robot_dashboard.console_dash_widget import ConsoleDashWidget
 
 from python_qt_binding.QtCore import QSize
-from python_qt_binding.QtGui import QMessageBox
+try:
+    from python_qt_binding.QtGui import QMessageBox
+except:
+    from python_qt_binding.QtWidgets import QMessageBox
 
 from .pr2_breaker import PR2BreakerButton
 from .pr2_battery import PR2Battery

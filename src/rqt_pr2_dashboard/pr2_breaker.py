@@ -38,7 +38,10 @@ from pr2_power_board.srv import PowerBoardCommand, PowerBoardCommandRequest
 
 from rqt_robot_dashboard.widgets import MenuDashWidget
 
-from python_qt_binding.QtGui import QMessageBox
+try:
+    from python_qt_binding.QtGui import QMessageBox
+except:
+    from python_qt_binding.QtWidgets import QMessageBox
 
 
 class PR2BreakerButton(MenuDashWidget):
