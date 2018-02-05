@@ -2,8 +2,8 @@
 Changelog for package rqt_pr2_dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.0 (2018-02-05)
+------------------
 * fix for kinetic (fix Qt path) `#19 <https://github.com/pr2/rqt_pr2_dashboard/issues/19>`_
 * Contributors: Furushchev
 
