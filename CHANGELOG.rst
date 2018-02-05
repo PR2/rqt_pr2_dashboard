@@ -2,6 +2,11 @@
 Changelog for package rqt_pr2_dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix for kinetic (fix Qt path) `#19 <https://github.com/pr2/rqt_pr2_dashboard/issues/19>`_
+* Contributors: Furushchev
+
 0.2.7 (2015-05-05)
 ------------------
 * Merge pull request `#17 <https://github.com/pr2/rqt_pr2_dashboard/issues/17>`_ from jstnhuang/hydro-devel
