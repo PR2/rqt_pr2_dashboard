@@ -2,12 +2,9 @@
 
 import sys
 
-import roslib
-
-pkg = 'rqt_pr2_dashboard'
-roslib.load_manifest(pkg)
-
 from rqt_gui.main import Main
+from rqt_pr2_dashboard.pr2_dashboard import PR2Dashboard
 
+plugin = 'rqt_pr2_dashboard.pr2_dashboard.PR2Dashboard'
 main = Main()
-sys.exit(main.main(sys.argv, standalone=pkg))
+sys.exit(main.main(standalone=plugin, plugin_argument_provider=PR2Dashboard.add_arguments))
