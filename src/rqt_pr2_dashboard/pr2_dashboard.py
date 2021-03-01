@@ -144,14 +144,14 @@ class PR2Dashboard(Dashboard):
         reset = rospy.ServiceProxy("{}/reset_motors".format(self._motor_namespace), std_srvs.srv.Empty)
         try:
             reset()
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             QMessageBox.critical(self._breakers[0], "Error", "Failed to reset the motors: service call failed with error: %s" % (e))
 
     def on_halt_motors(self):
         halt = rospy.ServiceProxy("{}/halt_motors".format(self._motor_namespace), std_srvs.srv.Empty)
         try:
             halt()
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             QMessageBox.critical(self._motors, "Error", "Failed to halt the motors: service call failed with error: %s" % (e))
 
     def shutdown_dashboard(self):

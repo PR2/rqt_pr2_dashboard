@@ -119,7 +119,7 @@ class PR2BreakerButton(MenuDashWidget):
             self._power_control(power_cmd)
 
             return True
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             QMessageBox.critical(self, "Error", "Service call failed with error: %s" % (e), "Error")
             return False
 
