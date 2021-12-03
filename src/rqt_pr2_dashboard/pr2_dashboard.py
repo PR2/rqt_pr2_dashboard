@@ -78,7 +78,11 @@ class PR2Dashboard(Dashboard):
         self.digital_outs = [0, 0, 0]
 
         self._console = ConsoleDashWidget(self.context, minimal=False)
+        self._console._show_console()
+
         self._monitor = MonitorDashWidget(self.context)
+        self._monitor._show_monitor()
+
         self._motors = PR2Motors(self.on_reset_motors, self.on_halt_motors)
         self._breakers = [PR2BreakerButton('Left Arm', 0),
                          PR2BreakerButton('Base', 1),
