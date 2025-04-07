@@ -2,6 +2,11 @@
 Changelog for package rqt_pr2_dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* catkin_install_python to let catkin to fix shebang (`#28 <https://github.com/PR2/rqt_pr2_dashboard/issues/28>`_)
+* Contributors: Yoshiki Obinata
+
 0.4.1 (2024-06-26)
 ------------------
 * Import setup from setuptools instead of distutils.core `#27 <https://github.com/PR2/rqt_pr2_dashboard/issues/27>`_
