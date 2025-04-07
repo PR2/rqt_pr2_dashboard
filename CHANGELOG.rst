@@ -2,8 +2,8 @@
 Changelog for package rqt_pr2_dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.2 (2025-04-07)
+------------------
 * catkin_install_python to let catkin to fix shebang (`#28 <https://github.com/PR2/rqt_pr2_dashboard/issues/28>`_)
 * Contributors: Yoshiki Obinata
 
